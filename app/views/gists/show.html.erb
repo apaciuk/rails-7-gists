@@ -1,0 +1,33 @@
+<div class="main gists-index">
+  <div class="container">
+  	<h2> <%= @gist["description"] %> </h2>
+  	<% if @gist["owner"].nil? %>
+  		<p> the owner is anonymous </p>
+	<% else %>
+		<%= link_to @gist["owner"]["login"], user_path(:name=>@gist["owner"]["login"]) %>
+	<% end %>
+	
+	<% if @gist["files"].nil? || @gist["files"].length == 0 %>
+		<p>There is no files in this gists</p>
+	<% else %>
+		<table>
+			<thead>
+				<tr>
+					<th>FileName</th>
+					<th>Language</th>
+					<th>Content</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @gist["files"].each do |file_name, f| %>
+					<tr>
+						<td><%= file_name %></td>
+						<td><%= f["language"]%></td>
+						<td><%= f["content"]%></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>
+  </div>
+</div>

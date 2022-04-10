@@ -1,0 +1,39 @@
+<div class="main gists-index">
+  <div class="container">
+		<h1 class="text-center">Gists</h1>
+  	<table>
+  		<thead>
+  			<tr>
+  				<th> <%= link_to "Owner", order_link("owner") %> </th>
+  				<th> <%= link_to "Descripiton", order_link("description")%>  </th>
+          <th> <%= link_to "Date of creation", order_link("created_at")%>  </th>
+  				<th> <%= link_to "Last Update", order_link("updated_at")%>  </th>
+  				<th> <%= link_to "Number of files", order_link("number_of_files") %> </th>  				
+          <th> <%= link_to "Number of comments", order_link("number_of_comments") %>  </th>         
+  				<th> &nbsp;</th>  				
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<% @gists.each do |g| %>
+		    	<tr>
+            <td>
+              <% if no_user_placeholder != g["owner"] %>
+  		    		  <%= link_to g["owner"], user_path(:name=>g["owner"]) %>
+              <% else %>
+                <%= g["owner"] %>
+              <% end %>
+            </td>
+		    		<td><%= g["description"] %></td>
+            <td><%= g["created_at"] %></td>
+		    		<td><%= g["updated_at"] %></td>
+		    		<td><%= g["number_of_files"]  %></td>
+            <td><%= g["number_of_comments"]  %></td>
+		    		<td><%= link_to "See More", gist_path(:id=>g["id"]) %></td>
+	    		</tr>
+		    <% end %>
+  		</tbody>
+  	</table>
+    
+
+  </div>
+</div>

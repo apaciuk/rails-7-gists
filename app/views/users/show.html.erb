@@ -1,0 +1,31 @@
+<div class="main gists-index">
+  <div class="container">
+    <div class="header">
+      <h2> Gists of <%= @user %></h2>
+    </div>
+  	<table>
+  		<thead>
+  			<tr>
+  				<th> Descripiton </th>
+          <th> Date of creation </th>
+  				<th> Last Update </th>
+  				<th> Number of files </th>  				
+  				<th> Number of comments </th>  				
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<% @gists.each do |g| %>
+		    	<tr>
+		    		<td><%= g["description"] %></td>
+            <td><%= g["created_at"] %></td>
+		    		<td><%= g["updated_at"] %></td>
+		    		<td><%= g["number_of_files"]  %></td>
+		    		<td><%= g["number_of_comments"]  %></td>
+	    		</tr>
+		    <% end %>
+  		</tbody>
+  	</table>
+    
+
+  </div>
+</div>
